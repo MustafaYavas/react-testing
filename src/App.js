@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from './components/Layout/Layout';
+import Counter from './pages/Counter/Counter';
+import Login from './pages/Login/Login';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+const App = () => {
+    const user = useSelector(state => state.user);
+
+    return (
+        <Layout>
+            <Routes>
+                <Route path='/' element={user.isLoggedIn ? <Counter /> : <Navigate replace to='/login' />}></Route>
+                <Route path='/login' element={<Login />}></Route>
+            </Routes>
+        </Layout>
+    )
 }
 
 export default App;
