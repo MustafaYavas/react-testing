@@ -14,7 +14,7 @@ const Counter = () => {
 
 	return (
 		<div className='flex flex-col justify- items-center'>
-			<p className='my-10 font-semibold text-2xl'>{counter}</p>
+			<p data-testid='counter-element' className='my-10 font-semibold text-2xl'>{counter}</p>
 
 			<div className='flex justify-center'>
 				<Button
